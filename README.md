@@ -68,6 +68,9 @@ After registration, log in at the /login page.
 **Manage Tasks:**
 
 Add: Use the form on the home page to add a new task.
+
 Start: Move tasks from pending to ongoing.
+
 Complete: Mark tasks as completed.
+
 Delete: Remove tasks from any status.
