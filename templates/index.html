@@ -6,11 +6,12 @@
 <!-- Form to add a new task -->
 <form action="{{ url_for('add_task') }}" method="post" class="mb-4">
     <div class="form-row align-items-center">
-        <div class="col-md-8 mb-2">
+        <div class="form-group col-md-8 mb-2">
+            <label for="task" class="form-label">Task Title</label>
             <input type="text" class="form-control" name="task" placeholder="Add a new task" required>
         </div>
-        <div class="col-md-4 mb-2">
-            <label for="reminder" class="sr-only">Reminder (optional)</label>
+        <div class="form-group col-md-4 mb-2">
+            <label for="reminder" class="form-label">Reminder (optional)</label>
             <input type="datetime-local" class="form-control" name="reminder" id="reminder">
         </div>
     </div>
