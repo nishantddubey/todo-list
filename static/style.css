@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+/* static/style.css */
+
+/* Add border between status columns */
+.border-right {
+    border-right: 2px solid #dee2e6; /* Light grey border color */
+}
+
+.border-bottom {
+    border-bottom: 2px solid #dee2e6; /* Light grey border color */
+}
+
+.pb-2 {
+    padding-bottom: 0.5rem; /* Space between the title and the list */
+}
+/* static/style.css */
+
+/* Ensure proper spacing between form elements */
+.form-row .form-control {
+    margin-right: 0.5rem; /* Adjust as needed */
+}

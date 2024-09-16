@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1 class="mt-4 mb-4">To-Do List</h1>
+
+<!-- Form to add a new task -->
+<form action="{{ url_for('add_task') }}" method="post" class="mb-4">
+    <div class="form-row align-items-center">
+        <div class="col-md-8 mb-2">
+            <input type="text" class="form-control" name="task" placeholder="Add a new task" required>
+        </div>
+        <div class="col-md-4 mb-2">
+            <label for="reminder" class="sr-only">Reminder (optional)</label>
+            <input type="datetime-local" class="form-control" name="reminder" id="reminder">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Task</button>
+</form>
+
+<!-- Display tasks by status in columns -->
+<div class="row">
+    <!-- Pending Tasks Column -->
+    <div class="col-md-4 border-right">
+        <h2 class="border-bottom pb-2">Pending Tasks</h2>
+        <ul class="list-group">
+            {% for task in tasks['pending'] %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between w-100">
+                    <span>{{ task['task'] }}</span>
+                    <span class="ml-2">
+                        <a href="{{ url_for('set_status', task_id=task['_id'], status='ongoing') }}" class="btn btn-warning btn-sm">Start</a>
+                        <a href="{{ url_for('delete_task', task_id=task['_id']) }}" class="btn btn-danger btn-sm">Delete</a>
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Ongoing Tasks Column -->
+    <div class="col-md-4 border-right">
+        <h2 class="border-bottom pb-2">Ongoing Tasks</h2>
+        <ul class="list-group">
+            {% for task in tasks['ongoing'] %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between w-100">
+                    <span>{{ task['task'] }}</span>
+                    <span class="ml-2">
+                        <a href="{{ url_for('set_status', task_id=task['_id'], status='completed') }}" class="btn btn-success btn-sm">Complete</a>
+                        <a href="{{ url_for('delete_task', task_id=task['_id']) }}" class="btn btn-danger btn-sm">Delete</a>
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Completed Tasks Column -->
+    <div class="col-md-4">
+        <h2 class="border-bottom pb-2">Completed Tasks</h2>
+        <ul class="list-group">
+            {% for task in tasks['completed'] %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between w-100">
+                    <span>{{ task['task'] }}</span>
+                    <span class="ml-2">
+                        <a href="{{ url_for('delete_task', task_id=task['_id']) }}" class="btn btn-danger btn-sm">Delete</a>
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
